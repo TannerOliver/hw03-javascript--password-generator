@@ -34,25 +34,25 @@ function howManyCharacters() {
   return numberOfCharacters;
 };
 
-function howManyNumbers() {
+function wantNumbers() {
   var getNumbers = window.confirm("Would you like to use numbers?");
   console.log(getNumbers);
   return getNumbers;
 };
 
-function howManySpecial() {
+function wantSpecial() {
   var getSpecial = window.confirm("Would you like to use Special Characters?");
   console.log(getSpecial);
   return getSpecial;
 };
 
-function howManyLower() {
+function wantLowercase() {
   var getLower = window.confirm("Would you like to use Lower Case Letters?");
   console.log(getLower);
   return getLower;
 };
 
-function howManyUpper() {
+function wantUppercase() {
   var getUpper = window.confirm("Would you like to use Upper Case Letters?");
   console.log(getUpper);
   return getUpper;
@@ -61,32 +61,32 @@ function howManyUpper() {
 function generatePassword() {
   var finalPassword = "";
   var numberOfCharacters = howManyCharacters();
-  var getNumbers = howManyNumbers();
-  var getSpecial = howManySpecial();
-  var getLower = howManyLower();
-  var getUpper = howManyUpper();
+  var getNumbers = wantNumbers();
+  var getSpecial = wantSpecial();
+  var getLower = wantLowercase();
+  var getUpper = wantUppercase();
   validation(numberOfCharacters, getNumbers, getSpecial, getLower, getUpper);
   return finalPassword;
 };
 
-function validation(Char, Number, Spec, Low, Up) {
+function validation(numberOfCharacters, getNumbers, getSpecial, getLower, getUpper) {
   window.confirm("Are these correct?");
-  if (Char >= 8 || Char <= 128){
-    if (Number === true || Spec === true || Low === true || Up === true){
-      buildPassword(Char, Number, Spec, Low, Up);
+  if (numberOfCharacters >= 8 || numberOfCharacters <= 128){
+    if (getNumbers === true || getSpecial === true || getLower === true || getUpper === true){
+      buildPassword(numberOfCharacters, getNumbers, getSpecial, getLower, getUpper);
     }
   }
 };
 
-function buildPassword(Char, Number, Spec, Low, Up) {
+function buildPassword(numberOfCharacters, getNumbers, getSpecial, getLower, getUpper) {
   var allCharacters = "";
-  if (Number === true) {allCharacters = allCharacters.concat(numbers)};
+  if (getNumbers === true) {allCharacters = allCharacters.concat(numbers)};
   
-  if (Spec === true) {allCharacters = allCharacters.concat(specialCharacters)};
+  if (getSpecial === true) {allCharacters = allCharacters.concat(specialCharacters)};
 
-  if (Low === true) {allCharacters = allCharacters.concat(lowercase)};
+  if (getLower === true) {allCharacters = allCharacters.concat(lowercase)};
 
-  if (Up === true) {allCharacters = allCharacters.concat(uppercase)};
+  if (getUpper === true) {allCharacters = allCharacters.concat(uppercase)};
   console.log(allCharacters);
 };
 
